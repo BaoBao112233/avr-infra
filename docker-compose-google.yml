@@ -13,6 +13,8 @@ services:
       - SYSTEM_MESSAGE=${SYSTEM_MESSAGE:-"Hello, I'm your personal assistant"}
     ports:
       - 5001:5001
+    volumes:
+      - ./overrides/avr-core/socket.js:/usr/src/app/socket.js:ro
     networks:
       - avr
 
@@ -84,9 +86,9 @@ services:
 
 networks:
   avr:
-    name: avr
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/24
+        - subnet: 10.20.0.0/16
+
           
